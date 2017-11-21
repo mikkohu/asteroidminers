@@ -26,7 +26,7 @@ public class PlayerShipMove : MonoBehaviour {
         waypoints = GameObject.FindGameObjectsWithTag("waypoint");
 
         Debug.Log(waypoints.Length+" waypoints found");
-        activeWaypoint = GameObject.Find("waypoint");
+        activeWaypoint = GameObject.Find("waypoint_00");
 
         foreach (GameObject wp in waypoints)
         {

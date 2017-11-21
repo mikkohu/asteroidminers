@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4390099133554458}
   - component: {fileID: 65658332076452334}
   - component: {fileID: 114441415267335722}
+  - component: {fileID: 320540442223433976}
   m_Layer: 0
   m_Name: waypoint
   m_TagString: waypoint
@@ -65,3 +66,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextWayPoint: {fileID: 0}
+--- !u!320 &320540442223433976
+PlayableDirector:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1597887667817542}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
