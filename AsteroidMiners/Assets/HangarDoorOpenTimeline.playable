@@ -15,7 +15,6 @@ MonoBehaviour:
   m_Tracks:
   - {fileID: 114622350008959520}
   - {fileID: 114915685315623286}
-  - {fileID: 114237099796485134}
   m_FixedDuration: 0
   m_EditorSettings:
     fps: 60
@@ -34,24 +33,6 @@ MonoBehaviour:
   m_Clip: {fileID: 8300000, guid: 86ee41d06cfc3cf4d8a91c42ca75defd, type: 3}
   m_Loop: 0
   m_bufferingTime: 0.1
---- !u!114 &114237099796485134
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778877366, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
-  m_Name: Playable Track
-  m_EditorClassIdentifier: 
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_AnimClip: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips: []
 --- !u!114 &114470834944833294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -311,7 +292,7 @@ MonoBehaviour:
     m_ClipIn: 0
     m_Asset: {fileID: 114470834944833294}
     m_UnderlyingAsset: {fileID: 7400000, guid: 96883f2942da71a4eae6921dd853d0b2, type: 2}
-    m_Duration: 10.569841269841273
+    m_Duration: 14.083333333333334
     m_TimeScale: 0.5
     m_ParentTrack: {fileID: 114915685315623286}
     m_EaseInDuration: 0
@@ -359,7 +340,7 @@ MonoBehaviour:
     m_ExposedParameterNames: []
     m_AnimationCurves: {fileID: 0}
     m_Recordable: 0
-    m_PostExtrapolationMode: 1
+    m_PostExtrapolationMode: 4
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
     m_PreExtrapolationTime: 3.2666666666666666
