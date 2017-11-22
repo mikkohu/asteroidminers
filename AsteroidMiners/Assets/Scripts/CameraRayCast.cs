@@ -13,7 +13,7 @@ public class CameraRayCast : MonoBehaviour {
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(Camera.main.transform.position, 5f);
+        //Gizmos.DrawSphere(Camera.main.transform.position, 5f);
     }
 
     // Update is called once per frame

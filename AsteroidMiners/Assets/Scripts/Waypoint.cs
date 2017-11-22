@@ -14,6 +14,14 @@ public class Waypoint : MonoBehaviour {
         collisionFunc = col;
     }
 
+    void OnDrawGizmos()
+    {
+        if(nextWayPoint != null)
+        {
+            Gizmos.DrawLine(transform.position, nextWayPoint.transform.position);
+        }        
+    }
+        
     void OnTriggerEnter(Collider other)
     {
         collisionFunc(other, gameObject);

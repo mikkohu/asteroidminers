@@ -19,8 +19,7 @@ public class PlayerShipMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log(transform.Find("ForwardHelper"));
-        forwardHelper = transform.Find("ForwardHelper");
+        forwardHelper = transform.Find("ForwardHelperPlayer");
 
         //Find waypoints in the scene
         waypoints = GameObject.FindGameObjectsWithTag("waypoint");
@@ -35,18 +34,17 @@ public class PlayerShipMove : MonoBehaviour {
             //Create a delegate for the OnTriggerEnter of waypoints
             collide c = (other, go) =>
             {
-                Debug.Log(go.name);
                 GameObject otherObject = other.gameObject;
-                Debug.Log(otherObject.tag);
+                Debug.Log(otherObject.tag == "Player");
                 Debug.Log(go == activeWaypoint);
-
                 if(otherObject.tag == "Player" &&
                     go == activeWaypoint)
                 {
-                    int i = Array.IndexOf(waypoints, activeWaypoint);
                     //Check whether there are more waypoints in the list
+                    Debug.Log(script.GetNextwayPoint());
                     if (script.GetNextwayPoint() != null)
-                    {                        
+                    {
+                        Debug.Log("New target gained!");
                         activeWaypoint = script.GetNextwayPoint();
                     }
                 }
@@ -61,13 +59,14 @@ public class PlayerShipMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Apply forward movement to the object
-        Vector3 direction = forwardHelper.transform.position+transform.position;
-        transform.Translate(direction * -moveSpeed * Time.deltaTime);
+        Vector3 direction = forwardHelper.position+transform.position;
+        Debug.DrawLine(transform.position, forwardHelper.position);
+        //transform.Translate(direction * -moveSpeed * Time.deltaTime, Space.World);
+        transform.position = Vector3.MoveTowards(transform.position, forwardHelper.position, Time.deltaTime * moveSpeed);
 
         Vector3 rotateDir = activeWaypoint.transform.position - transform.position;
         Vector3 newDir = Vector3.RotateTowards(transform.forward, rotateDir,
             rotateSpeed * Time.deltaTime, 0f);
-        Debug.DrawRay(transform.position, newDir, Color.red);
         transform.rotation = Quaternion.LookRotation(newDir);
 	}
 }
