@@ -14,9 +14,7 @@ public class ProbeScript : MonoBehaviour {
     {
         target = go;
     }
-
-
-
+    
 	// Use this for initialization
 	void Start () {
         forwardHelper = transform.Find("ForwardHelper");

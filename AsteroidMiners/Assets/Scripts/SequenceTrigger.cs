@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SequenceTrigger {
+public class SequenceTrigger : MonoBehaviour {
 
-    void RunTrigger() { }
+    public GameObject fighterPrefab;
+    public void ExcecuteTrigger()
+    {
+
+    }
 }

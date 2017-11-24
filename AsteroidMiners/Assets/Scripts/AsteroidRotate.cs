@@ -15,6 +15,14 @@ public class AsteroidRotate : MonoBehaviour {
         rotY = Random.Range(0, 0.5f); 
         rotZ = Random.Range(0, 0.5f);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "probe")
+        {
+            Destroy(other.gameObject);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {

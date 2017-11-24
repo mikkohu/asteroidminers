@@ -9,6 +9,8 @@ public class Waypoint : MonoBehaviour {
 
     public GameObject nextWayPoint;
 
+    public SequenceTrigger sequenceTrigger;
+
     public void SetCollision(PlayerShipMove.collide col)
     {
         collisionFunc = col;
@@ -26,6 +28,7 @@ public class Waypoint : MonoBehaviour {
     {
         collisionFunc(other, gameObject);
 
+        sequenceTrigger.ExcecuteTrigger();
         
         PlayableDirector director = GetComponent<PlayableDirector>();
         director.Play();

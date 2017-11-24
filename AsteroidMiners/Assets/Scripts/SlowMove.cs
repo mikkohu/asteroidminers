@@ -13,7 +13,8 @@ public class SlowMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 direction = forwardHelper.transform.position + transform.position;
-        transform.Translate(direction * -moveSpeed * Time.deltaTime);
+        Vector3 direction = forwardHelper.position + transform.position;
+        transform.position = Vector3.MoveTowards(transform.position, forwardHelper.position, Time.deltaTime * moveSpeed);
+
     }
 }
