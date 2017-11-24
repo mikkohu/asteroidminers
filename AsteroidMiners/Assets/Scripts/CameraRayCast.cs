@@ -6,9 +6,14 @@ public class CameraRayCast : MonoBehaviour {
 
     private GameObject stareTarget;
 
+    public float targetChangeTimer;
+    //Private float to store the default value for targetChangeTimer
+    private float changeTime;
+
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        changeTime = targetChangeTimer;
 	}
 
     void OnDrawGizmos()
@@ -25,20 +30,28 @@ public class CameraRayCast : MonoBehaviour {
 
         if(stareTarget != null) {
             Debug.DrawLine(rayOrigin, stareTarget.transform.position);
+            targetChangeTimer -= Time.deltaTime;
+            if( targetChangeTimer <= 0)
+            {
+                if(stareTarget.tag == "asteroid")
+                {
+                    GameObject player = GameObject.FindGameObjectWithTag("Player");
+                    player.GetComponent<PlayerShipMove>().SpawnProbe(stareTarget);
+                }
+            }
         }
         
         if ( Physics.SphereCast( rayOrigin, 5f, rayDirection, out raycastHit) && raycastHit.collider)
         {
             GameObject hitTarget = raycastHit.collider.gameObject;
-
-
+            
             if (stareTarget == null || !hitTarget.Equals(stareTarget))
             {
                 stareTarget = hitTarget;
-                Debug.Log("Looking at " +stareTarget.name);
-
-
-            }   
+                //Reset the timer
+                targetChangeTimer = changeTime;
+                Debug.Log("Looking at " + stareTarget.name);
+            }
         }
 	}
 }

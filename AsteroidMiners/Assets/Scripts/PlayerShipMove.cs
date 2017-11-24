@@ -10,6 +10,7 @@ public class PlayerShipMove : MonoBehaviour {
     private GameObject[] waypoints;
 
     private GameObject activeWaypoint;
+    private GameObject previousWaypoint;
 
     private Transform forwardHelper;
     //private Vector3 direction;
@@ -34,9 +35,7 @@ public class PlayerShipMove : MonoBehaviour {
             //Create a delegate for the OnTriggerEnter of waypoints
             collide c = (other, go) =>
             {
-                GameObject otherObject = other.gameObject;
-                Debug.Log(otherObject.tag == "Player");
-                Debug.Log(go == activeWaypoint);
+                GameObject otherObject = other.gameObject;                
                 if(otherObject.tag == "Player" &&
                     go == activeWaypoint)
                 {
@@ -44,8 +43,12 @@ public class PlayerShipMove : MonoBehaviour {
                     Debug.Log(script.GetNextwayPoint());
                     if (script.GetNextwayPoint() != null)
                     {
-                        Debug.Log("New target gained!");
+                        previousWaypoint = gameObject;
                         activeWaypoint = script.GetNextwayPoint();
+                        if (!script.GetNextwayPoint())
+                        {
+                            rotateSpeed = 0f;
+                        }
                     }
                 }
             };
@@ -55,15 +58,21 @@ public class PlayerShipMove : MonoBehaviour {
         
 	}
 
+    // Spawn a probe that flies towards given gameobject
+    public void SpawnProbe (GameObject asteroid)
+    {
+
+    }
+
 	
 	// Update is called once per frame
 	void Update () {
+        
         //Apply forward movement to the object
         Vector3 direction = forwardHelper.position+transform.position;
-        Debug.DrawLine(transform.position, forwardHelper.position);
-        //transform.Translate(direction * -moveSpeed * Time.deltaTime, Space.World);
         transform.position = Vector3.MoveTowards(transform.position, forwardHelper.position, Time.deltaTime * moveSpeed);
 
+        //Rotate towards the next waypoint
         Vector3 rotateDir = activeWaypoint.transform.position - transform.position;
         Vector3 newDir = Vector3.RotateTowards(transform.forward, rotateDir,
             rotateSpeed * Time.deltaTime, 0f);

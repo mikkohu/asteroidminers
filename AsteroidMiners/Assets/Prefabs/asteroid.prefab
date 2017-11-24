@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23635339323145656}
   - component: {fileID: 95254114386444386}
   - component: {fileID: 114584092838183782}
+  - component: {fileID: 65772129728694292}
   m_Layer: 0
   m_Name: asteroid
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1415955927539776}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -562.223, y: 47.01069, z: -555.19226}
+  m_LocalPosition: {x: -16.218906, y: 134.65225, z: -130.76213}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,6 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1415955927539776}
   m_Mesh: {fileID: 4300000, guid: c27f2139610f31d458db07b4d1b2e58c, type: 3}
+--- !u!65 &65772129728694292
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1415955927539776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1398501, y: 2.5325258, z: 1.9949884}
+  m_Center: {x: -0.17854601, y: 0.02397651, z: -0.0025180287}
 --- !u!95 &95254114386444386
 Animator:
   serializedVersion: 3
