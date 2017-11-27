@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 65658332076452334}
   - component: {fileID: 114441415267335722}
   - component: {fileID: 320540442223433976}
-  m_Layer: 0
+  - component: {fileID: 114716911172814092}
+  m_Layer: 2
   m_Name: waypoint
   m_TagString: waypoint
   m_Icon: {fileID: 0}
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1597887667817542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.792343, y: -3.5306702, z: 20.398941}
+  m_LocalPosition: {x: -29, y: -5.4698896, z: -17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -66,6 +67,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextWayPoint: {fileID: 0}
+  sequenceTrigger: {fileID: 114716911172814092}
+--- !u!114 &114716911172814092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1597887667817542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399ce89038ccd0940a5e6fd4888cc219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fighterPrefab: {fileID: 1799745194586744, guid: 35dc83ddf95d4fd468a56b88fb2bc804,
+    type: 2}
+  fighterPrefab: {fileID: 1799745194586744, guid: 35dc83ddf95d4fd468a56b88fb2bc804,
+    type: 2}
 --- !u!320 &320540442223433976
 PlayableDirector:
   m_ObjectHideFlags: 1
@@ -74,11 +91,13 @@ PlayableDirector:
   m_GameObject: {fileID: 1597887667817542}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 0}
-  m_InitialState: 1
+  m_PlayableAsset: {fileID: 11400000, guid: d5aa5d53e0536e24685f9206c7953526, type: 2}
+  m_InitialState: 0
   m_WrapMode: 2
-  m_DirectorUpdateMode: 1
+  m_DirectorUpdateMode: 3
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: 114907682190315526, guid: d5aa5d53e0536e24685f9206c7953526, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []

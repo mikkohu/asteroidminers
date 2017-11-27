@@ -27,11 +27,8 @@ public class Waypoint : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         collisionFunc(other, gameObject);
-
-        sequenceTrigger.ExcecuteTrigger();
         
-        PlayableDirector director = GetComponent<PlayableDirector>();
-        director.Play();
+        sequenceTrigger.ExcecuteTrigger();
     }
 
     public GameObject GetNextwayPoint() { return nextWayPoint; }

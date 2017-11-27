@@ -29,7 +29,6 @@ public class PlayerShipMove : MonoBehaviour {
         //Find waypoints in the scene
         waypoints = GameObject.FindGameObjectsWithTag("waypoint");
 
-        Debug.Log(waypoints.Length+" waypoints found");
         activeWaypoint = GameObject.Find("waypoint_00");
 
         foreach (GameObject wp in waypoints)
@@ -43,16 +42,17 @@ public class PlayerShipMove : MonoBehaviour {
                 if(otherObject.tag == "Player" &&
                     go == activeWaypoint)
                 {
+                    Debug.Log(script.GetNextwayPoint());
                     //Check whether there are more waypoints in the list
                     if (script.GetNextwayPoint() != null)
                     {
                         previousWaypoint = gameObject;
-                        activeWaypoint = script.GetNextwayPoint();
-                        if (!activeWaypoint.GetComponent<Waypoint>().GetNextwayPoint())
-                        {
-                            rotateSpeed = 0f;
-                            nextToAsteroids = true;
-                        }
+                        activeWaypoint = script.GetNextwayPoint();   
+                    } else //Assume we hit the last checkpoint
+                    {
+                        rotateSpeed = 0.0f;
+                        moveSpeed = 0.0f;
+                        SequenceManager.instance.setCollectingOre(true);
                     }
                 }
             };
@@ -65,9 +65,11 @@ public class PlayerShipMove : MonoBehaviour {
     // Spawn a probe that flies towards given gameobject
     public void SpawnProbe (GameObject asteroid)
     {
-        GameObject newProbe = Instantiate(probePrefab, transform.position + Vector3.down, transform.rotation);
-        newProbe.GetComponent<ProbeScript>().SetTarget(asteroid);
-        
+        if(SequenceManager.instance.isNextToAsteroids())
+        {
+            GameObject newProbe = Instantiate(probePrefab, transform.position + Vector3.down, transform.rotation);
+            newProbe.GetComponent<ProbeScript>().SetTarget(asteroid);
+        }        
     }
 
 	
@@ -79,7 +81,7 @@ public class PlayerShipMove : MonoBehaviour {
         {
             float waypointDistance = Vector3.Distance(previousWaypoint.transform.position, activeWaypoint.transform.position);
             float shipDistance = Vector3.Distance(transform.position, activeWaypoint.transform.position);
-            moveSpeed = moveSpeed * (shipDistance / waypointDistance); 
+            //Debug.Log(moveSpeed * (shipDistance / waypointDistance)); 
         }
         
         //Apply forward movement to the object

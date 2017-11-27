@@ -37,6 +37,7 @@ public class CameraRayCast : MonoBehaviour {
                 {
                     GameObject player = GameObject.FindGameObjectWithTag("Player");
                     player.GetComponent<PlayerShipMove>().SpawnProbe(stareTarget);
+                    targetChangeTimer = changeTime; //Reset timer
                 }
             }
         }

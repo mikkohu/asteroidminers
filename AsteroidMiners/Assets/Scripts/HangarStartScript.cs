@@ -17,7 +17,7 @@ public class HangarStartScript : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         if(pd.state == PlayState.Paused)
         {
-            Mathf.Clamp(player.GetComponent<PlayerShipMove>().moveSpeed += 0.005f, 0f, 1.5f);
+            SequenceManager.instance.setHangarOpen(true);
         }	
 	}
 }
