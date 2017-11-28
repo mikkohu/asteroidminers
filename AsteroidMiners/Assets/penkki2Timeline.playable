@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Parent: {fileID: 11400000}
   m_Children: []
   m_Clips:
-  - m_Start: 0.8211244940757751
+  - m_Start: 5.766666666666667
     m_ClipIn: 0
     m_Asset: {fileID: 114145302907561832}
     m_UnderlyingAsset: {fileID: 8300000, guid: 65c4a85f5d20d1f4ca957980baa26827, type: 3}
@@ -90,7 +90,7 @@ MonoBehaviour:
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: 12.78779116074244
+    m_BlendOutDuration: 12.787791160742437
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -111,19 +111,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -138,7 +126,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: 213384__peridactyloptrix__hover-engine
     m_Version: 1
-  - m_Start: 5.75
+  - m_Start: 10.695542172590894
     m_ClipIn: 0
     m_Asset: {fileID: 114789997236066746}
     m_UnderlyingAsset: {fileID: 8300000, guid: 75dabab34bd81494f90ff5bd423f777c, type: 3}
@@ -147,23 +135,11 @@ MonoBehaviour:
     m_ParentTrack: {fileID: 114781171251812276}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 12.78779116074244
+    m_BlendInDuration: 12.787791160742437
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

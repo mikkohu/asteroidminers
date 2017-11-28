@@ -25,6 +25,8 @@ public class PlayerShipMove : MonoBehaviour {
     public float moveSpeed;
     public float rotateSpeed;
 
+    public float maxSpeed;
+
 	// Use this for initialization
 	void Start () {
         pd = GetComponent<PlayableDirector>();
@@ -99,7 +101,7 @@ public class PlayerShipMove : MonoBehaviour {
             float shipDistance = Vector3.Distance(transform.position, activeWaypoint.transform.position);
             //Debug.Log(moveSpeed * (shipDistance / waypointDistance)); 
         }
-        
+        float r = rotateSpeed * (moveSpeed/maxSpeed);
         //Apply forward movement to the object
         Vector3 direction = forwardHelper.position+transform.position;
         transform.position = Vector3.MoveTowards(transform.position, forwardHelper.position, Time.deltaTime * moveSpeed);
@@ -107,7 +109,7 @@ public class PlayerShipMove : MonoBehaviour {
         //Rotate towards the next waypoint
         Vector3 rotateDir = activeWaypoint.transform.position - transform.position;
         Vector3 newDir = Vector3.RotateTowards(transform.forward, rotateDir,
-            rotateSpeed * Time.deltaTime, 0f);
+            r * Time.deltaTime, 0f);
         transform.rotation = Quaternion.LookRotation(newDir);
 	}
 }

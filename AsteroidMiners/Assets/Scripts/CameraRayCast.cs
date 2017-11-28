@@ -10,6 +10,8 @@ public class CameraRayCast : MonoBehaviour {
     //Private float to store the default value for targetChangeTimer
     private float changeTime;
 
+    private float lerpT = 0;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -41,7 +43,7 @@ public class CameraRayCast : MonoBehaviour {
                 targetChangeTimer = changeTime; //Reset timer
             }
             foreach(Renderer rend in stareTarget.GetComponentsInChildren<Renderer>()) {
-                rend.material.SetFloat("_Red", Mathf.Lerp(1, 0, 1));
+                rend.material.SetFloat("_Red", Mathf.Lerp(1, 0, (lerpT += Time.deltaTime) * 0.25f));
             }    
             
         }
@@ -56,6 +58,7 @@ public class CameraRayCast : MonoBehaviour {
                 {
                     foreach (Renderer rend in stareTarget.GetComponentsInChildren<Renderer>())
                     {
+                        lerpT = 0;
                         rend.material.SetFloat("_Red", 1);
                     }
                 }                
@@ -66,11 +69,12 @@ public class CameraRayCast : MonoBehaviour {
             }
         }
         else
-        {
+        { //Set stareTarget null when watching nothing
             if (stareTarget != null)
             {
                 foreach (Renderer rend in stareTarget.GetComponentsInChildren<Renderer>())
                 {
+                    lerpT = 0;
                     rend.material.SetFloat("_Red", 1);
                 }
             }

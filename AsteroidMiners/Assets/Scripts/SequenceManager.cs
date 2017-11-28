@@ -35,14 +35,15 @@ public class SequenceManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if(hangarOpen && !collectingOre && player.GetComponent<PlayerShipMove>().moveSpeed < 5.5f)
+        PlayerShipMove psm = player.GetComponent<PlayerShipMove>();
+        if (hangarOpen && !collectingOre && psm.moveSpeed < psm.maxSpeed)
         {
             Mathf.Clamp(player.GetComponent<PlayerShipMove>().moveSpeed += 0.005f, 0f, 1.5f);
         }
 
         if(collectedOre >= 5 && collectingOre)
         {
-            player.GetComponent<PlayerShipMove>().SetActiveWaypoint(GameObject.Find("hangar"));
+            player.GetComponent<PlayerShipMove>().SetActiveWaypoint(GameObject.Find("hangar/waypoint_hangar"));
             collectingOre = false;
         } 
     }
