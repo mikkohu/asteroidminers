@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SequenceTrigger : MonoBehaviour {
 
-    public void ExcecuteTrigger()
-    {
-
-    }
+    public virtual void ExecuteTrigger() { }
+    
 }

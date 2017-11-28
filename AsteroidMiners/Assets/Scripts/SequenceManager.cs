@@ -39,6 +39,12 @@ public class SequenceManager : MonoBehaviour {
         {
             Mathf.Clamp(player.GetComponent<PlayerShipMove>().moveSpeed += 0.005f, 0f, 1.5f);
         }
+
+        if(collectedOre >= 5 && collectingOre)
+        {
+            player.GetComponent<PlayerShipMove>().SetActiveWaypoint(GameObject.Find("hangar"));
+            collectingOre = false;
+        } 
     }
 
     public void setCollectingOre(bool b)

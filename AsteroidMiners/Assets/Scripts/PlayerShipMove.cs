@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerShipMove : MonoBehaviour {
 
@@ -14,6 +15,8 @@ public class PlayerShipMove : MonoBehaviour {
 
     public GameObject probePrefab;
 
+    private AudioSource ac;
+    private PlayableDirector pd;
     private Transform forwardHelper;
     //private Vector3 direction;
 
@@ -24,6 +27,8 @@ public class PlayerShipMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        pd = GetComponent<PlayableDirector>();
+        ac = GetComponent<AudioSource>();
         forwardHelper = transform.Find("ForwardHelperPlayer");
 
         //Find waypoints in the scene
@@ -72,9 +77,20 @@ public class PlayerShipMove : MonoBehaviour {
         }        
     }
 
+    public void SetActiveWaypoint(GameObject go)
+    {
+        activeWaypoint = go;
+        
+    }
+
 	
 	// Update is called once per frame
 	void Update () {
+
+        if(pd.state == PlayState.Paused && !ac.isPlaying)
+        {
+            ac.Play();
+        }
 
         //Slow down the ship when approaching the final waypoint.
         if (!activeWaypoint.GetComponent<Waypoint>().GetNextwayPoint())

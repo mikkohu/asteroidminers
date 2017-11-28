@@ -37,22 +37,44 @@ public class CameraRayCast : MonoBehaviour {
                 {
                     GameObject player = GameObject.FindGameObjectWithTag("Player");
                     player.GetComponent<PlayerShipMove>().SpawnProbe(stareTarget);
-                    targetChangeTimer = changeTime; //Reset timer
                 }
+                targetChangeTimer = changeTime; //Reset timer
             }
+            foreach(Renderer rend in stareTarget.GetComponentsInChildren<Renderer>()) {
+                rend.material.SetFloat("_Red", Mathf.Lerp(1, 0, 1));
+            }    
+            
         }
         
-        if ( Physics.SphereCast( rayOrigin, 5f, rayDirection, out raycastHit) && raycastHit.collider)
+        if ( Physics.SphereCast( rayOrigin, 10f, rayDirection, out raycastHit) && raycastHit.collider)
         {
             GameObject hitTarget = raycastHit.collider.gameObject;
-            
+            Debug.Log(hitTarget);
             if (stareTarget == null || !hitTarget.Equals(stareTarget))
             {
+                if(stareTarget != null)
+                {
+                    foreach (Renderer rend in stareTarget.GetComponentsInChildren<Renderer>())
+                    {
+                        rend.material.SetFloat("_Red", 1);
+                    }
+                }                
                 stareTarget = hitTarget;
                 //Reset the timer
                 targetChangeTimer = changeTime;
                 Debug.Log("Looking at " + stareTarget.name);
             }
+        }
+        else
+        {
+            if (stareTarget != null)
+            {
+                foreach (Renderer rend in stareTarget.GetComponentsInChildren<Renderer>())
+                {
+                    rend.material.SetFloat("_Red", 1);
+                }
+            }
+            stareTarget = null;
         }
 	}
 }

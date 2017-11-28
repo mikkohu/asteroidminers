@@ -2,9 +2,10 @@
 	Properties {
 		_Color ("Color", Color) = (1,1,0,0.7)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
-		_Glossiness ("Smoothness", Range(0,1)) = 0.5
-		_Metallic ("Metallic", Range(0,1)) = 0.0
-		_Prop ("Prop", Range(0,1)) = 0.0
+		_Glossiness("Smoothness", Range(0,1)) = 0.5
+		_Metallic("Metallic", Range(0,1)) = 0.0
+		_Prop("Prop", Range(0,1)) = 0.0
+		_Red("Red", Range(0,1)) = 1.0
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
@@ -26,6 +27,7 @@
 		half _Glossiness;
 		half _Metallic;
 		fixed4 _Color;
+		half _Red;
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
 		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -36,6 +38,7 @@
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 			// Albedo comes from a texture tinted by color
+			_Color.x = _Red;
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
 			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables

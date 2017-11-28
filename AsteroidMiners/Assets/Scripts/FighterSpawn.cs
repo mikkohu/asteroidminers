@@ -6,15 +6,22 @@ public class FighterSpawn : SequenceTrigger {
 
     public GameObject fighterPrefab;  
 
-    public void ExecuteTrigger ()
+    public override void ExecuteTrigger ()
     {
-        Debug.Log("Yo!");
-        GameObject fighters = GameObject.Find("Fighters");
-        GameObject spawn = GameObject.Find("Fighter/FighterSpawn");
-        GameObject target = GameObject.Find("Fighter/FighterTarget");
+        if(fighterPrefab != null)
+        {
+            GameObject fighters = GameObject.Find("Fighters");
+            GameObject spawn = GameObject.Find("Fighters/FighterSpawn");
+            GameObject target = GameObject.Find("Fighters/FighterTarget");
 
-        GameObject newFighter = Instantiate(fighterPrefab, fighters.transform);
-        newFighter.transform.position = spawn.transform.position;
-        newFighter.GetComponent<SlowMove>().moveSpeed = 15.5f;
+            GameObject newFighter = Instantiate(fighterPrefab, fighters.transform);
+            newFighter.transform.position = spawn.transform.position;
+            Quaternion rot = newFighter.transform.rotation;
+            //rot.SetEulerAngles(rot.x, rot.y + 90, rot.z);
+            newFighter.transform.rotation = Quaternion.Euler(rot.x, rot.y + 90, rot.z);
+            newFighter.GetComponent<SlowMove>().moveSpeed = 200f;
+
+        }
+        
     } 
 }

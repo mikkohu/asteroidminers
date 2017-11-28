@@ -67,6 +67,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Prop: 0
+    - _Red: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
